@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Preserves from './components/Preserves';
+import Weather from './components/Weather/Weather';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Preserves/>
+    <Weather/>
   </React.StrictMode>
 );
 

@@ -7,7 +7,7 @@ const Plant = require('../models/plant')
 const Harvest = require('../models/harvest')
 const SowedPlant = require('../models/sowedPlant')
 const mongoose = require('mongoose')
-const db = "mongodb+srv://Klimmie:9ZIxkdcqbt3MTuUx@gardener.8ybqtxn.mongodb.net/test"
+const db = "mongodb+srv://Main:2tZ2WGUapD9XQEoc@gardener.8ybqtxn.mongodb.net/test"
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
