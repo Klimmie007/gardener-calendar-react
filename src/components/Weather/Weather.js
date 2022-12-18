@@ -20,7 +20,7 @@ function Weather() {
     const fetchWeather = async () => {
         try {
             await navigator.geolocation.getCurrentPosition(savePositionToState);
-            const res = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}3&appid=${apiKey}&units=metric`);
+            const res = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`);
             setTemperature(res.data.list[0].main.temp);
             setCity(res.data.city.name);
             setCountry(res.data.city.country);
@@ -34,7 +34,7 @@ function Weather() {
 
     useEffect(() => {
         fetchWeather();
-    }, []);
+    }, [latitude, longitude]);
 
 
     return(
