@@ -25,7 +25,7 @@ function Weather() {
             setCity(res.data.city.name);
             setCountry(res.data.city.country);
             setFeelsLike(res.data.list[0].main.feels_like);
-            console.log(res.data);
+            //console.log(res.data);
         }
         catch(err) {
             console.error(err);

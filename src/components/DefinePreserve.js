@@ -7,7 +7,7 @@ class DefinePreserve extends Component {
             name: '',
             description: '',
             productionDate: new Date(),
-            expiratinDate: new Date(),
+            expiratinDate: new Date()
         };
     }
 
