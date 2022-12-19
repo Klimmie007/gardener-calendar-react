@@ -6,8 +6,8 @@ const Preserve = props => {
         <div>
             <p>{props.name}</p>
             <p>{props.description}</p>
-            <p>{props.productionDate.getFullYear()}</p>
-            <p>{props.expirationDate.getFullYear()}</p>
+            <p>{props.productionDate.getDate()}/{props.productionDate.getMonth() + 1}/{props.productionDate.getFullYear()}</p>
+            <p>{props.expirationDate.getDate()}/{props.expirationDate.getMonth() + 1}/{props.expirationDate.getFullYear()}</p>
         </div>
     );
 };

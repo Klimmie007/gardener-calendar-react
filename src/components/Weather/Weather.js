@@ -42,7 +42,7 @@ function Weather() {
             <div>
                 <h2>{city}, {country}</h2>
                 <h2>Temperature: {temperature.toFixed(0)} °C</h2>
-                <h2>Feels like: {feelsLike.toFixed(0)}</h2>
+                <h2>Feels like: {feelsLike.toFixed(0)} °C</h2>
             </div>
         </div>
     );

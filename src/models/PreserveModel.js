@@ -6,3 +6,5 @@ class PreserveModel {
         this.expirationDate = expirationDate;
     };
 }
+
+export default PreserveModel;

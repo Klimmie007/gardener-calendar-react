@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Preserves from './components/Preserves';
 import Weather from './components/Weather/Weather';
+import DefinePreserve from './components/DefinePreserve';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

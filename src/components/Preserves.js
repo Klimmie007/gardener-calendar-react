@@ -1,39 +1,73 @@
 import React, { Component } from "react";
+import DefinePreserve from "./DefinePreserve";
 import Preserve from "./Preserve";
-
-/*const Preserves = () => {
-    return(
-        <div>
-            <h2>List of Preserves</h2>
-            <Preserve name="xdd"/>
-            <Preserve/>
-            <Preserve/>
-            <Preserve/>
-        </div>
-    );
-};*/
+import PreserveModel from "../models/PreserveModel";
 
 class Preserves extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            items: [],
-            isLoaded: false,
-        }
+            preserveList: [
+                {
+                    name: "name1",
+                    description: "desc1",
+                    productionDate: new Date(),
+                    expirationDate: new Date()
+                },
+                {
+                    name: "name2",
+                    description: "desc2",
+                    productionDate: new Date(),
+                    expirationDate: new Date()
+                },
+                {
+                    name: "name3",
+                    description: "desc3",
+                    productionDate: new Date(),
+                    expirationDate: new Date()
+                }
+                //new PreserveModel("name1", "desc1", new Date(), new Date()),
+                //new PreserveModel("name2", "desc2", new Date(), new Date()),
+                //new PreserveModel("name3", "desc3", new Date(), new Date()),
+            ],
+        };
+        //this.addPreserve = this.addPreserve.bind(this);
     }
 
-    componentDidMount() {
-       fetch(''); 
+    addPreserve = (preserve) => {
+        this.setState(state => {
+            let list = state.preserveList;
+            //let newPreserve = new PreserveModel(preserve.name, preserve.description, new Date(), new Date());
+            list.push({
+                name: preserve.name,
+                description: preserve.description,
+                productionDate: new Date(preserve.productionDate),
+                expirationDate: new Date(preserve.expiratinDate)
+            });
+            //list.push(newPreserve);
+            return {preserveList: list};
+        })
     }
 
     render() {
+        const {preserveList} = this.state;
         return(
             <div>
                 <h2>List of Preserves</h2>
-                <Preserve/>
-                <Preserve/>
-                <Preserve/>
-                <Preserve/>
+                {preserveList.map((preserve, key) => {
+                    return(
+                        
+                        <Preserve
+                            key = {key}
+                            name = {preserve.name}
+                            description = {preserve.description}
+                            productionDate = {preserve.productionDate}
+                            expirationDate = {preserve.expirationDate}
+                        />
+                        
+                    );
+                })}
+                <DefinePreserve addPreserve={this.addPreserve}/>
             </div>
         );
     }
