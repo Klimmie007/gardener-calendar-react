@@ -4,14 +4,27 @@ import Field from "./Field"
 
 const SmartReduxForm = (props) =>
 {
-    let field = props.field
+    let name = props.name
+    let type = props.type || "text"
+    let reducer = props.reducer
+    let dispatch =  props.dispatch
+    let validate = props.validate
     const retVal = []
-    retVal.push(<label key={"label"}>{field.name}:</label>)
+    retVal.push(<label key={"label"}>{name}:</label>)
     retVal.push(<p key="name new line"></p>)
-    retVal.push(<input key={"input"} type={field.type} 
-                value={store.getState()[field.reducer][field.name.replace(/\s*/g, '_')]} 
-                onChange={e => store.dispatch({type: field.dispatch, [field.name]: e.target.value})}/>)
-    let error = field.validate(store.getState()[field.reducer][field.name])
+    retVal.push(<input key={"input"} type={type} 
+                value={store.getState()[reducer][name]} 
+                onChange={e => store.dispatch({type: dispatch, [name]: e.target.value})}/>)
+    let error
+
+    if(validate)
+    {
+        error = validate(store.getState()[reducer][name])
+    }
+    else
+    {
+        error = store.getState()[reducer][name] == "" ? "Field cannot be empty" : "" 
+    }
     if(error !== "")
     {
         retVal.push(<p key={"error new line"}></p>)
@@ -21,7 +34,11 @@ const SmartReduxForm = (props) =>
 }
 
 SmartReduxForm.propTypes = {
-    field: PropTypes.instanceOf(Field)
+    name: PropTypes.string.isRequired,
+    type: PropTypes.string,
+    reducer: PropTypes.string.isRequired,
+    dispatch: PropTypes.string.isRequired,
+    validate: PropTypes.func
 }
 
 
