@@ -7,7 +7,7 @@ const Plant = require('../models/plant')
 const Harvest = require('../models/harvest')
 const SowedPlant = require('../models/sowedPlant')
 const mongoose = require('mongoose')
-const db = "mongodb+srv://Main:2tZ2WGUapD9XQEoc@gardener.8ybqtxn.mongodb.net/test"
+const db = "mongodb+srv://Main:6tKHnkPLbDvUgAJ1@gardener.8ybqtxn.mongodb.net"
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
@@ -61,6 +61,11 @@ router.post('/register', (req, res) => {
         }
         else
         {
+            if(userData.password == undefined)
+            {
+                res.status(409).send("No password has been specified")
+                return
+            }
             bcrypt.genSalt(saltRounds, (err, salt) => {
                 if(err){
                     console.log(err)
