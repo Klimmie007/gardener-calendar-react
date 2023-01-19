@@ -47,14 +47,14 @@ class Register extends Component
     
     render()
     {
-        let field = new Field("Email", "text", "INPUT_EMAIL", this.ValidateEmail)
+        let field = new Field("Email", "text", "INPUT_EMAIL", "account", this.ValidateEmail)
         return (
             <form onSubmit={(e) => {e.preventDefault(); store.dispatch({type: "REGISTER"})}}>
                 <SmartReduxForm field={field}/>
                 <p/>
-                <SmartReduxForm field={new Field("Nickname", "text", "INPUT_NICKNAME", this.ValidateNickname)}/>
+                <SmartReduxForm field={new Field("Nickname", "text", "INPUT_NICKNAME","account", this.ValidateNickname)}/>
                 <p/>
-                <SmartReduxForm field={new Field("Password", "password", "INPUT_PASSWORD")}/>
+                <SmartReduxForm field={new Field("Password", "password", "INPUT_PASSWORD", "account")}/>
                 <p/>
                 <input type="submit" value="Submit" disabled={!this.state.valid}/>
                 <p/>

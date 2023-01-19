@@ -5,7 +5,7 @@ const AccountState = {
     Email: "",
     Nickname: "",
     Password: "",
-    errorCode: ""
+    accountError: ""
 }
 
 const inputEmail = createAction('INPUT_EMAIL')
@@ -13,7 +13,7 @@ const inputNickname = createAction('INPUT_NICKNAME')
 const inputPassword = createAction('INPUT_PASSWORD')
 const register = createAction('REGISTER')
 const login = createAction('LOGIN')
-const error = createAction('ERROR')
+const error = createAction('ACCOUNT_ERROR')
 
 const AccountReducer = createReducer(AccountState, (builder) => {
     builder
@@ -35,12 +35,12 @@ const AccountReducer = createReducer(AccountState, (builder) => {
                 {
                     if(request.status != 200)
                     {
-                        store.dispatch({type: "ERROR", text: request.responseText})
+                        store.dispatch({type: "ACCOUNT_ERROR", text: request.responseText})
                         console.log(request.response)
                     }
                     else
                     {
-                        store.dispatch({type: "ERROR", text: ""})
+                        store.dispatch({type: "ACCOUNT_ERROR", text: ""})
                     }
                 }
             }
@@ -57,7 +57,11 @@ const AccountReducer = createReducer(AccountState, (builder) => {
                 {
                     if(request.status != 200)
                     {
-                        store.dispatch({type: "ERROR", text: request.responseText})
+                        store.dispatch({type: "ACCOUNT_ERROR", text: request.responseText})
+                    }
+                    else
+                    {
+                        store.dispatch({type: "ACCOUNT_ERROR", text: ""})
                     }
                 }
             }

@@ -9,9 +9,9 @@ const SmartReduxForm = (props) =>
     retVal.push(<label key={"label"}>{field.name}:</label>)
     retVal.push(<p key="name new line"></p>)
     retVal.push(<input key={"input"} type={field.type} 
-                value={store.getState().account[field.name.replace(/\s*/g, '_')]} 
+                value={store.getState()[field.reducer][field.name.replace(/\s*/g, '_')]} 
                 onChange={e => store.dispatch({type: field.dispatch, [field.name]: e.target.value})}/>)
-    let error = field.validate(store.getState().account[field.name])
+    let error = field.validate(store.getState()[field.reducer][field.name])
     if(error !== "")
     {
         retVal.push(<p key={"error new line"}></p>)
