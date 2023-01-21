@@ -11,6 +11,7 @@ function Weather() {
     const [city, setCity] = useState('');
     const [country, setCountry] = useState('');
     const [feelsLike, setFeelsLike] = useState(0);
+    const [forecastForTimeline, setForecastForTimeline] = useState([]);
 
     const savePositionToState = (position) => {
         setLatitude(position.coords.latitude);
@@ -25,6 +26,7 @@ function Weather() {
             setCity(res.data.city.name);
             setCountry(res.data.city.country);
             setFeelsLike(res.data.list[0].main.feels_like);
+            setForecastForTimeline(res.data.list.slice(0, 8));
             //console.log(res.data);
         }
         catch(err) {
@@ -43,6 +45,16 @@ function Weather() {
                 <h2>{city}, {country}</h2>
                 <h2>Temperature: {temperature.toFixed(0)} °C</h2>
                 <h2>Feels like: {feelsLike.toFixed(0)} °C</h2>
+            </div>
+            <div className="timeline">
+                <h1>3-hour Forecast</h1>
+                {forecastForTimeline.map((weather, key) => {
+                    return (
+                    <div key={key}>
+                        <h2>{weather.main.temp.toFixed(0)} °C</h2>
+                        <h2>{weather.dt_txt.slice(-8, -3)}</h2>
+                    </div>)  
+                })}
             </div>
         </div>
     );
