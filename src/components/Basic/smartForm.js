@@ -1,6 +1,6 @@
 import { store } from "./store"
 import PropTypes from "prop-types"
-import Field from "./Field"
+//import Field from "./Field"
 
 const SmartReduxForm = (props) =>
 {

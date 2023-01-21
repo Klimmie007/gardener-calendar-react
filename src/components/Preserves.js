@@ -3,6 +3,7 @@ import DefinePreserve from "./DefinePreserve";
 import Preserve from "./Preserve";
 import PreserveModel from "../models/PreserveModel";
 import Weather from "./Weather/Weather";
+import FutureWeather from "./FutureWeather/FutureWeather";
 
 class Preserves extends Component {
     constructor(props) {
@@ -65,6 +66,7 @@ class Preserves extends Component {
                 })}
                 <DefinePreserve addPreserve={this.addPreserve}/>
                 <Weather/>
+                <FutureWeather/>
             </div>
         );
     }
