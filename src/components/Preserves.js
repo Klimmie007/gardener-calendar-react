@@ -51,7 +51,7 @@ class Preserves extends Component {
         })
     }
 
-    addPreserve = (preserve) => {
+    /*addPreserve = (preserve) => {
         this.setState(state => {
             var list = state.preserveList;
             let newPreserve = new PreserveModel(preserve.name, preserve.description, new Date(preserve.productionDate), new Date(preserve.expiratinDate));
@@ -60,16 +60,17 @@ class Preserves extends Component {
                 description: preserve.description,
                 productionDate: new Date(preserve.productionDate),
                 expirationDate: new Date(preserve.expiratinDate)
-            });*/
+            });*//*
             list.push(newPreserve);
             return {preserveList: list};
         })
-    }
+    }*/
 
     render() {
         const {preserveList} = this.state;
         return(
             <div>
+                <DefinePreserve/>
                 <h2>List of Preserves</h2>
                 {preserveList.map((preserve, key) => {
                     return <Preserve
@@ -79,7 +80,7 @@ class Preserves extends Component {
                             productionDate = {preserve.productionDate}
                             expirationDate = {preserve.expirationDate}/>   
                 })}
-                <DefinePreserve addPreserve={this.addPreserve}/>
+                {/*<DefinePreserve addPreserve={this.addPreserve}/>*/}
                 <Weather/>
                 <FutureWeather/>
             </div>
