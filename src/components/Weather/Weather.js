@@ -15,7 +15,7 @@ function Weather() {
     const [forecastForTimeline, setForecastForTimeline] = useState([]);
     const [weatherMain, setWeatherMain] = useState('');
     const [weatherDesc, setWeatherDesc] = useState('');
-    const [time, setTime] = useState('');
+    
     const currentTime = new Date();
 
     const savePositionToState = (position) => {

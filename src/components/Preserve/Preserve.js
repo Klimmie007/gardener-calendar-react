@@ -6,7 +6,7 @@ const Preserve = props => {
         <div>
             <p>{props.name}</p>
             <p>{props.description}</p>
-            <p>{props.productionDate.getDate()}/{props.productionDate.getMonth() + 1}/{props.productionDate.getFullYear()}</p>
+            <p>{props.dateOfProduction.getDate()}/{props.productionDate.getMonth() + 1}/{props.productionDate.getFullYear()}</p>
             <p>{props.expirationDate.getDate()}/{props.expirationDate.getMonth() + 1}/{props.expirationDate.getFullYear()}</p>
         </div>
     );
@@ -15,14 +15,14 @@ const Preserve = props => {
 Preserve.propTypes = {
     name: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    productionDate: PropTypes.instanceOf(Date).isRequired,
+    dateOfProduction: PropTypes.instanceOf(Date).isRequired,
     expirationDate: PropTypes.instanceOf(Date).isRequired
 }
 
 Preserve.defaultProps = {
     name: "Preserve's name",
     description: "Preserve's description",
-    productionDate: new Date(),
+    dateOfProduction: new Date(),
     expirationDate: new Date()
 }
 
