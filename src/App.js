@@ -1,8 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
-import Preserves from './components/Preserves';
+import Preserves from './components/Preserve/Preserves';
 import Weather from './components/Weather/Weather';
-import DefinePreserve from './components/DefinePreserve';
+import DefinePreserve from './components/Preserve/DefinePreserve';
 import Calendar from './components/Calendar/Calendar';
 import Navbar from './components/Basic/Navbar';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';

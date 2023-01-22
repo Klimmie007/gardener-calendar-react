@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { Component } from "react";
-import PreserveModel from "../models/PreserveModel";
+import PreserveModel from "../../models/PreserveModel";
 
 class DefinePreserve extends Component {
     constructor(props) {

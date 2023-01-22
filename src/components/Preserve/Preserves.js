@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import DefinePreserve from "./DefinePreserve";
 import Preserve from "./Preserve";
-import PreserveModel from "../models/PreserveModel";
-import Weather from "./Weather/Weather";
-import FutureWeather from "./FutureWeather/FutureWeather";
+import PreserveModel from "../../models/PreserveModel";
+import Weather from "../Weather/Weather";
+import FutureWeather from "../FutureWeather/FutureWeather";
 import axios from "axios";
 
 class Preserves extends Component {
