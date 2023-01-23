@@ -19,6 +19,9 @@ const Navbar = () => {
                             <Link to="/preserves">Preserves</Link>
                         </td>
                         <td>
+                            <Link to="/gardenpatches">Garden patches</Link>
+                        </td>
+                        <td>
                             <Link to="/register">Register</Link>
                         </td>
                     </tr>

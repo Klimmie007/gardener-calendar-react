@@ -9,6 +9,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Component } from 'react';
 import { store } from './components/Basic/store';
 import Register from './components/Account/Register';
+import GardenPatches from './components/GardenPatch/GardenPatches';
 
 
 class App extends Component {
@@ -21,6 +22,7 @@ class App extends Component {
         <Route path="/" element={<Navbar/>}>
           <Route index element={<Calendar/>}/>
           <Route path="preserves" element={<Preserves/>}/>
+          <Route path="gardenpatches" element={<GardenPatches/>}/>
           <Route path="register" element={<Register/>}></Route>
         </Route>  
       </Routes>

@@ -50,7 +50,7 @@ function Weather() {
     return(
         <div>
             <div>
-                <h2>{currentTime.getHours()}:{currentTime.getMinutes()}</h2>
+                <h2>{currentTime.getHours()}:{(currentTime.getMinutes() < 10 ? '0' : '') + currentTime.getMinutes()}</h2>
                 <h2>{city}, {country}</h2>
                 <h2>Temperature: {temperature.toFixed(0)} °C</h2>
                 <h2>Feels like: {feelsLike.toFixed(0)} °C</h2>
