@@ -11,6 +11,12 @@ function Weather() {
     const [city, setCity] = useState('');
     const [country, setCountry] = useState('');
     const [feelsLike, setFeelsLike] = useState(0);
+    const [humidity, setHumidity] = useState('');
+    const [forecastForTimeline, setForecastForTimeline] = useState([]);
+    const [weatherMain, setWeatherMain] = useState('');
+    const [weatherDesc, setWeatherDesc] = useState('');
+    
+    const currentTime = new Date();
 
     const savePositionToState = (position) => {
         setLatitude(position.coords.latitude);
@@ -25,6 +31,10 @@ function Weather() {
             setCity(res.data.city.name);
             setCountry(res.data.city.country);
             setFeelsLike(res.data.list[0].main.feels_like);
+            setForecastForTimeline(res.data.list.slice(0, 8));
+            setHumidity(res.data.list[0].main.humidity);
+            setWeatherDesc(res.data.list[0].weather[0].description);
+            setWeatherMain(res.data.list[0].weather[0].main);
             //console.log(res.data);
         }
         catch(err) {
@@ -40,9 +50,22 @@ function Weather() {
     return(
         <div>
             <div>
+                <h2>{currentTime.getHours()}:{(currentTime.getMinutes() < 10 ? '0' : '') + currentTime.getMinutes()}</h2>
                 <h2>{city}, {country}</h2>
                 <h2>Temperature: {temperature.toFixed(0)} °C</h2>
                 <h2>Feels like: {feelsLike.toFixed(0)} °C</h2>
+                <h2>{weatherMain}, {weatherDesc}</h2>
+                <h2>Humidity: {humidity}%</h2>
+            </div>
+            <div className="timeline">
+                <h1>3-hour Forecast</h1>
+                {forecastForTimeline.map((weather, key) => {
+                    return (
+                    <div key={key}>
+                        <h2>{weather.main.temp.toFixed(0)} °C</h2>
+                        <h2>{weather.dt_txt.slice(-8, -3)}</h2>
+                    </div>)  
+                })}
             </div>
         </div>
     );
