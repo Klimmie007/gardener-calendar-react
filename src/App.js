@@ -9,6 +9,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Component } from 'react';
 import { store } from './components/Basic/store';
 import Register from './components/Account/Register';
+import Login from './components/Account/Login';
 
 
 class App extends Component {
@@ -21,7 +22,8 @@ class App extends Component {
         <Route path="/" element={<Navbar/>}>
           <Route index element={<Calendar/>}/>
           <Route path="preserves" element={<Preserves/>}/>
-          <Route path="register" element={<Register/>}></Route>
+          <Route path="register" element={<Register/>}/>
+          <Route path="login" element={<Login/>}/>
         </Route>  
       </Routes>
     </BrowserRouter>

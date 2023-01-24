@@ -1,5 +1,7 @@
 import { createAction, createReducer } from "@reduxjs/toolkit"
 import { store } from "../Basic/store"
+import { redirect } from "@remix-run/router"
+import { BrowserRouter } from "react-router-dom"
 
 const AccountState = {
     Email: "",
@@ -27,7 +29,6 @@ const AccountReducer = createReducer(AccountState, (builder) => {
             state.Password = action.Password
         })
         .addCase(register, (state) =>{
-            console.log(state)
             let request = new XMLHttpRequest()
             
             request.onreadystatechange = () => {
@@ -41,6 +42,8 @@ const AccountReducer = createReducer(AccountState, (builder) => {
                     else
                     {
                         store.dispatch({type: "ACCOUNT_ERROR", text: ""})
+                        localStorage.setItem("token", request.response.JSON.token)
+                        window.location.replace("http://localhost:3001/")
                     }
                 }
             }
@@ -62,6 +65,8 @@ const AccountReducer = createReducer(AccountState, (builder) => {
                     else
                     {
                         store.dispatch({type: "ACCOUNT_ERROR", text: ""})
+                        localStorage.setItem("token", request.response.token)
+                        window.location.replace("http://localhost:3001/")    
                     }
                 }
             }

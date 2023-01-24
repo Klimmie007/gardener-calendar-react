@@ -1,13 +1,12 @@
-import { Component } from "react";  
+import { Component } from "react";
 import SmartReduxForm from "../Basic/smartForm";
 import { store } from "../Basic/store";
 
-class Register extends Component
+class Login extends Component
 {
     constructor(props)
     {
         super(props)
-
         this.state = {valid: false}
     }
 
@@ -26,17 +25,15 @@ class Register extends Component
     componentDidMount()
     {
         store.subscribe(()=>{
-            this.setState({valid: this.ValidateEmail(store.getState().account.Email) === "" && store.getState().account.Nickname != "" && store.getState().account.Password != "", errorCode: store.getState().account.errorCode})
+            this.setState({valid: this.ValidateEmail(store.getState().account.Email) === "" && store.getState().account.Password != "", errorCode: store.getState().account.errorCode})
         }) 
     }
     
     render()
     {
         return (
-            <form onSubmit={(e) => {e.preventDefault(); store.dispatch({type: "REGISTER"})}}>
+            <form onSubmit={(e) => {e.preventDefault(); store.dispatch({type: "LOGIN"})}}>
                 <SmartReduxForm name="Email" dispatch="INPUT_EMAIL" reducer="account" validate={this.ValidateEmail}/>
-                <p/>
-                <SmartReduxForm name="Nickname" dispatch="INPUT_NICKNAME" reducer="account"/>
                 <p/>
                 <SmartReduxForm name="Password" dispatch="INPUT_PASSWORD" reducer="account" type="password"/>
                 <p/>
@@ -49,4 +46,4 @@ class Register extends Component
     }
 }
 
-export default Register
+export default Login
