@@ -68,7 +68,6 @@ const preserveSlice = createSlice({
             return action.payload.preserves;
         })
         .addCase(addPreserveAsync.fulfilled, (state, action) => {
-            console.log(action.payload);
             state.push(action.payload.preserve);
         });
         /*[getPreservesAsync.fulfilled]: (state, action) => {
