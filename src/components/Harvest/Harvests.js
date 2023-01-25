@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import DefineHarvest from "./DefineHarvest";
 import Harvest from "./Harvest";
-import Weather from "../Weather/Weather";
-import FutureWeather from "../FutureWeather/FutureWeather";
 import { useSelector, useDispatch } from "react-redux";
 import { getHarvestsAsync } from "./HarvestSlice";
 
@@ -25,8 +23,6 @@ const Harvests = () => {
                         harvestedPlant = {harvest.description}
                         harvestDate = {new Date(harvest.dateOfProduction)}/>   
             })}
-            <Weather/>
-            <FutureWeather/>
         </div>
     );
 }
