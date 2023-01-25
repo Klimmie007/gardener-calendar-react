@@ -22,6 +22,9 @@ const Navbar = () => {
                             <Link to="/gardenpatches">Garden patches</Link>
                         </td>
                         <td>
+                            <Link to="/harvests">Harvests</Link>
+                        </td>
+                        <td>
                             <Link to="/register">Register</Link>
                         </td>
                     </tr>
