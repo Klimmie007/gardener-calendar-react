@@ -13,6 +13,8 @@ import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import CalendarReducer from './components/Calendar/CalendarReducer';
 import { Provider } from 'react-redux'
 import { store } from './components/Basic/store';
+import Harvests from './components/Harvest/Harvests';
+import DefineHarvest from './components/Harvest/DefineHarvest';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'))

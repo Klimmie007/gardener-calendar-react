@@ -11,6 +11,8 @@ import { store } from './components/Basic/store';
 import Register from './components/Account/Register';
 import Login from './components/Account/Login';
 import GardenPatches from './components/GardenPatch/GardenPatches';
+import Harvests from './components/Harvest/Harvests';
+import DefineHarvest from './components/Harvest/DefineHarvest';
 
 
 class App extends Component {
@@ -24,6 +26,7 @@ class App extends Component {
           <Route index element={<Calendar/>}/>
           <Route path="preserves" element={<Preserves/>}/>
           <Route path="login" element={<Login/>}/>
+          <Route path="harvests" element={<Harvests/>}/>        
           <Route path="gardenpatches" element={<GardenPatches/>}/>
           <Route path="register" element={<Register/>}></Route>
         </Route>  
