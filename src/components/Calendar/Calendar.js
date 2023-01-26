@@ -17,6 +17,8 @@ class Calendar extends Component
       endYear: new Date().getFullYear()
 
     };
+    store.dispatch({type: "GET_PLANTS"})
+    store.dispatch({type: "GET_SOWED"})
   }
 
   componentDidMount()
@@ -25,7 +27,6 @@ class Calendar extends Component
       // When state will be updated(in our case, when items will be fetched), 
       // we will update local component state and force component to rerender 
       // with new data.
-      console.log(this)
       this.setState({
         startDate: new Date(store.getState().calendar.startDate),
         dateSelected: new Date(store.getState().calendar.dateSelected),

@@ -16,7 +16,6 @@ class Month extends Component{
     months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     render() {
         const {date, dateSelected} = this.props
-        console.log(dateSelected)
         const weeks = []
         const itDate = new Date(date.getFullYear(), date.getMonth(), 1)
         for(let i = 0; itDate.getMonth() === date.getMonth(); i++)

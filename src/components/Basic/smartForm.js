@@ -8,8 +8,9 @@ const SmartReduxForm = (props) =>
     let reducer = props.reducer
     let dispatch =  props.dispatch
     let validate = props.validate
+    let pattern = props.pattern
     const retVal = []
-    retVal.push(<label key={"label"}>{name}:</label>)
+    retVal.push(<label key={"label"}>{name.replaceAll('_', ' ')}:</label>)
     retVal.push(<p key="name new line"></p>)
     retVal.push(<input key={"input"} type={type} 
                 value={store.getState()[reducer][name]} 
@@ -37,7 +38,8 @@ SmartReduxForm.propTypes = {
     type: PropTypes.string,
     reducer: PropTypes.string.isRequired,
     dispatch: PropTypes.string.isRequired,
-    validate: PropTypes.func
+    validate: PropTypes.func,
+    pattern: PropTypes.string
 }
 
 

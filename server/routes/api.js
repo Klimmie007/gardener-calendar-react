@@ -186,7 +186,7 @@ router.put('/user/password', verifyToken, (req, res) => {
 
 router.put('/user/nickname', verifyToken, (req, res) => {
     let nickname = req.body.nickname
-    User.findByIdAndUpdate({_id: req.userID}, {email: nickname}, {new: true}, (err, user) => {
+    User.findByIdAndUpdate({_id: req.userID}, {nickname: nickname}, {new: true}, (err, user) => {
         if(!err && user != null)
             res.status(204)
         else
@@ -341,6 +341,50 @@ router.put('/harvest', (req, res) => {
         else{
             res.status(204)
         }
+    })
+})
+
+router.post('/harvest/id', (req, res) => {
+    let cropID = req.body.cropID
+    let date = req.body.harvestDate
+    let weight = req.body.weight
+    SowedPlant.findById({_id: cropID}, (error, crop) => {if(error || !crop){
+        res.status(404).send(cropID)
+    }
+    else{
+        Plant.findById(crop.plantID, (error, plant) => {
+            if(error || !plant)
+            {
+                res.status(404).send("Baza ma problem")
+            }
+            else
+            {
+                if(plant.type == "Plant")
+                {
+                    SowedPlant.findByIdAndRemove({_id: cropID}, (error, removed) => {
+                        if(error || !removed)
+                        {
+                            console.log("no clue")
+                        }
+                        else
+                        {
+                            console.log(removed)
+                        }
+                    })
+                }
+                let harvest = new Harvest({weight: weight, harvestedPlant: plant._id, harvestDate: date})
+
+                    harvest.save((error, newSowedPlant) => {
+                        if(error || !newSowedPlant){
+                            res.status(400).send("what the fuck")
+                        }
+                        else{
+                            res.status(204).send(newSowedPlant)
+                        }
+                    })
+            }
+        })
+    }
     })
 })
 

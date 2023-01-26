@@ -9,6 +9,7 @@ export const getGardenPatchesAsync = createAsyncThunk(
             const res = await axios.get('http://localhost:3000/api/gardenPatches');
             const gardenPatches = await res.data.map((gardenPatch) => {
                 return {
+                    _id: gardenPatch._id,
                     name: gardenPatch.name,
                     type: gardenPatch.type,
                     amount: gardenPatch.amount
@@ -33,6 +34,7 @@ export const addGardenPatchAsync = createAsyncThunk(
         ).toJSON())
         .then(res => {
             const gardenPatch = {
+                _id: res.data.newGardenPatch._id,
                 name: res.data.newGardenPatch.name,
                 type: res.data.newGardenPatch.type,
                 amount: res.data.newGardenPatch.amount

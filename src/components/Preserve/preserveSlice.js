@@ -33,7 +33,6 @@ export const addPreserveAsync = createAsyncThunk(
             new Date(payload.expirationDate)
         ).toJSON())
         .then(res => {
-            console.log(res);
             const preserve = {
                 name: res.data.newPreserve.name,
                 description: res.data.newPreserve.description,
